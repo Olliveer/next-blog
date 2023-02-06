@@ -77,7 +77,12 @@ async function Post({ params: { slug } }: Props) {
 
                 <div className="w-64">
                   <h3 className="text-lg font-bold">{post.author.name}</h3>
-                  <div className="">{/* TODO: Author bio **/}</div>
+                  <div className="line-clamp-2 text-sm">
+                    <PortableText
+                      value={post.author.bio}
+                      components={richTextCompoents}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
