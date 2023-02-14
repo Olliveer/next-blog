@@ -1,6 +1,9 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
+import { codeInput } from "@sanity/code-input";
+// import { latexInput } from "sanity-plugin-latex-input";
+import { table } from "@sanity/table";
 import { schemaTypes } from "./src/schemas";
 import { myTheme } from "./theme";
 import StudioNavbar from "./src/components/StudioNavbar";
@@ -22,8 +25,9 @@ export default defineConfig({
       defaultDocumentNode,
     }),
     visionTool(),
+    codeInput(),
+    table(),
   ],
-
   schema: {
     types: schemaTypes,
   },

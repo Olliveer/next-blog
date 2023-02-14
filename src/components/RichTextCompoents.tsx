@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import urlFor from "../../lib/urlFor";
+import { Code } from "./Code";
+
+import YoutubeComponent from "./YoutubeComponent";
+import atex from "katex";
+import KatexView from "./Katex";
+import Table from "./Table";
 
 export const richTextCompoents = {
   types: {
@@ -16,6 +22,26 @@ export const richTextCompoents = {
         </div>
       );
     },
+    youtube: ({ value }: any) => (
+      <div className="w-[800px]  mx-auto my-5">
+        <YoutubeComponent url={value.url} />
+      </div>
+    ),
+    code: ({ value }: any) => (
+      <div className="max-w-[800px] rounded mx-auto  my-11">
+        <Code key={value._key} code={value.code} language={value.language} />
+      </div>
+    ),
+    latex: ({ value }: any) => (
+      <div className="max-w-[800px] rounded mx-auto  my-11">
+        <KatexView key={value._key} body={value.body} />
+      </div>
+    ),
+    table: ({ value }: any) => (
+      <div className="max-w-[800px] rounded mx-auto  my-11">
+        <Table key={value._key} data={value} />
+      </div>
+    ),
   },
   list: {
     bullet: ({ children }: any) => (
@@ -61,5 +87,6 @@ export const richTextCompoents = {
         </Link>
       );
     },
+    internalLink: ({ children, value }: any) => console.log(children, value),
   },
 };
